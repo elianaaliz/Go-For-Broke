@@ -1,6 +1,6 @@
 ---
 title: "Estadistica"
-output: html_document
+output: rmarkdown::github_document
 date: '2022-03-10'
 ---
 
@@ -92,9 +92,10 @@ Una vez limpios los datos ¿Cuales son los códigos postales que tenemos?
 ```{r}
 length(unique(airbnb$CodigoPostal))
 sort(unique(airbnb$CodigoPostal), decreasing = FALSE)
+```
 
 ¿Cuales son los 5 códigos postales con más entradas? ¿Y con menos? ¿Cuantas entradas tienen?
-
+```{r}
 print("Los 5 códigos postales con más entradas son:") 
 head(sort(table(airbnb$CodigoPostal),decreasing = T),5)
 
@@ -164,8 +165,10 @@ for (i in levels(airbnb$TipoAlquiler)){
 kt<-kruskal.test(Precio~TipoAlquiler,airbnb)
 
 paste("pvalor Kruskal=",kt$p.value)
+```
 
 Filtra el dataframe cuyos tipo de alquiler sea 'Entire home/apt' y guardalo en un dataframe llamado airbnb_entire. Estas serán las entradas que tienen un alquiler del piso completo.
+```{r}
 airbnb_entire<-subset(airbnb,TipoAlquiler=='Entire home/apt')
 ```
 
